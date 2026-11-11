@@ -173,7 +173,7 @@ void main() {
     await _pump(tester, _container(slots: [_s0]), const HomePage());
     await golden(tester, 'home_1');
     expect(find.text('無効'), findsNothing);
-    expect(find.text('予約'), findsOneWidget);
+    expect(find.text('アラーム'), findsOneWidget);
   });
 
   testWidgets('home: 4 schedules', (tester) async {
@@ -239,7 +239,7 @@ void main() {
       sizes.add(hero());
     }
 
-    // 予約なし → 予約あり（有効）
+    // アラームなし → アラームあり（有効）
     container.read(schedulesProvider.notifier).set([_s0]);
     await step();
     // 無効に切り替え
@@ -253,7 +253,7 @@ void main() {
     // 動作中
     container.read(statusProvider.notifier).set(_status(on: true, active: 0));
     await step();
-    // 動作中・次の予約なし
+    // 動作中・次のアラームなし
     container.read(schedulesProvider.notifier).set(const []);
     await step();
     // 手動で動作中でないとき

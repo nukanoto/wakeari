@@ -345,7 +345,7 @@ void main() {
       await renameAndVerify('wakeari');
       await log('STEP10 ok: name restored to wakeari');
 
-      // 後始末: Config を 30 に戻し、予約を全削除
+      // 後始末: Config を 30 に戻し、アラームを全削除
       await conn.writeConfig(defaultDurationSeconds);
       await waitFor(
         () => config() == defaultDurationSeconds ? true : null,
@@ -381,7 +381,7 @@ void main() {
             .first;
         await until(tile, const Duration(seconds: 30));
         await tester.tap(tile);
-        final heroLabel = find.textContaining(RegExp('次の予約|予約はありません|動作中'));
+        final heroLabel = find.textContaining(RegExp('次のアラーム|アラームはありません|動作中'));
         await until(heroLabel, const Duration(seconds: 30));
         await log('SMOKE home screen shown');
         await tester.tap(find.byTooltip('設定'));

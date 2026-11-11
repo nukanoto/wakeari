@@ -130,7 +130,7 @@ class DebugPage extends ConsumerWidget {
             const _Header('危険な操作'),
             ListTile(
               title: Text(
-                '予約をすべて削除',
+                'アラームをすべて削除',
                 style: theme.textTheme.bodyLarge?.copyWith(color: scheme.error),
               ),
               onTap: () => _confirmClear(context, ref),
@@ -174,7 +174,7 @@ class DebugPage extends ConsumerWidget {
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('予約をすべて削除しますか？'),
+        title: const Text('アラームをすべて削除しますか？'),
         content: const Text('この操作は元に戻せません。'),
         actions: [
           TextButton(

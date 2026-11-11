@@ -94,13 +94,8 @@ class _ScheduleEditorState extends ConsumerState<ScheduleEditor> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
+            SizedBox(
               height: 176,
-              decoration: BoxDecoration(
-                color: scheme.surfaceContainerHigh,
-                borderRadius: BorderRadius.circular(Radii.card),
-              ),
-              clipBehavior: Clip.antiAlias,
               child: CupertinoTheme(
                 data: CupertinoThemeData(
                   brightness: theme.brightness,

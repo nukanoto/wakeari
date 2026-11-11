@@ -69,7 +69,7 @@ class HomePage extends ConsumerWidget {
           : FloatingActionButton.extended(
               onPressed: () => showScheduleEditor(context),
               icon: const Icon(Icons.add),
-              label: const Text('予約を追加'),
+              label: const Text('アラームを追加'),
             ),
     );
   }

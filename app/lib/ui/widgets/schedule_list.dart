@@ -8,7 +8,7 @@ import '../send.dart';
 import 'schedule_editor.dart';
 import 'schedule_row.dart';
 
-/// 予約一覧（全幅の行を細い区切り線で並べる）。
+/// アラーム一覧（全幅の行を細い区切り線で並べる）。
 /// スワイプで削除（元に戻せる）、Switch で有効/無効、タップで編集。
 class ScheduleList extends ConsumerStatefulWidget {
   const ScheduleList({super.key});
@@ -30,7 +30,7 @@ class _ScheduleListState extends ConsumerState<ScheduleList> {
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
-          content: Text('${formatTime(slot.hour, slot.minute)} の予約を削除しました'),
+          content: Text('${formatTime(slot.hour, slot.minute)} のアラームを削除しました'),
           action: SnackBarAction(
             label: '元に戻す',
             onPressed: () => ref
@@ -59,7 +59,7 @@ class _ScheduleListState extends ConsumerState<ScheduleList> {
     final header = Padding(
       padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
       child: Text(
-        '予約',
+        'アラーム',
         style: theme.textTheme.titleMedium?.copyWith(color: scheme.primary),
       ),
     );
@@ -73,7 +73,7 @@ class _ScheduleListState extends ConsumerState<ScheduleList> {
             padding: const EdgeInsets.symmetric(vertical: 32),
             child: Center(
               child: Text(
-                '予約はまだありません',
+                'アラームはまだありません',
                 style: theme.textTheme.titleMedium?.copyWith(
                   color: scheme.onSurfaceVariant,
                 ),

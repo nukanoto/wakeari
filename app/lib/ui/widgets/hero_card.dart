@@ -9,7 +9,7 @@ import '../send.dart';
 import '../theme.dart';
 import 'shapes.dart';
 
-/// 次の予約（待機中）または動作中の表示。
+/// 次のアラーム（待機中）または動作中の表示。
 class HeroCard extends ConsumerWidget {
   const HeroCard({super.key});
 
@@ -89,7 +89,7 @@ class _Idle extends StatelessWidget {
       return Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          '予約はありません',
+          'アラームはありません',
           style: theme.textTheme.headlineMedium?.copyWith(color: on),
         ),
       );
@@ -99,7 +99,7 @@ class _Idle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '次の予約 · ${untilLabel(next.at, now)}',
+          '次のアラーム · ${untilLabel(next.at, now)}',
           style: theme.textTheme.titleSmall?.copyWith(color: on),
         ),
         Text(
@@ -147,7 +147,7 @@ class _Running extends ConsumerWidget {
         Text(
           active == null
               ? '手動'
-              : '${formatTime(active.hour, active.minute)} の予約',
+              : '${formatTime(active.hour, active.minute)} のアラーム',
           style: theme.textTheme.titleSmall?.copyWith(color: on),
         ),
         const SizedBox(height: 4),
@@ -167,7 +167,7 @@ class _Running extends ConsumerWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          next == null ? '次の予約はありません' : '次は ${timeWithWeekday(next.at)}',
+          next == null ? '次のアラームはありません' : '次は ${timeWithWeekday(next.at)}',
           style: theme.textTheme.titleMedium?.copyWith(color: on),
         ),
       ],
