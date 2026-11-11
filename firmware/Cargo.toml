@@ -1,0 +1,75 @@
+[package]
+edition      = "2024"
+name         = "wakeari"
+rust-version = "1.95"
+version      = "0.1.0"
+
+[[bin]]
+name = "wakeari"
+path = "./src/main.rs"
+
+[dependencies]
+esp-hal = { version = "~1.2.2", features = ["esp32c5", "unstable"] }
+
+esp-rtos = { version = "0.4.0", features = [
+  "embassy",
+  "esp-alloc",
+  "esp-radio",
+  "esp32c5",
+] }
+
+esp-bootloader-esp-idf = { version = "0.6.0", features = ["esp32c5", "embedded-storage"] }
+
+bt-hci = "0.9.0"
+embassy-executor = { version = "0.10.0", features = [] }
+embassy-time = "0.5.0"
+embedded-io = "0.7.1"
+embedded-io-async = "0.7.0"
+esp-alloc = { version = "0.11.0", features = ["esp32c5"] }
+esp-backtrace = { version = "0.20.0", features = [
+  "esp32c5",
+  "panic-handler",
+  "println",
+] }
+esp-println = { version = "0.18.0", features = ["esp32c5"] }
+esp-radio = { version = "1.0.0-beta.1", features = [
+  "ble",
+  "esp-alloc",
+  "esp32c5",
+  "unstable",
+] }
+trouble-host = { version = "0.7.0", features = ["gatt"] }
+
+wakeari-protocol = { path = "protocol" }
+embassy-sync = "0.8.0"
+embassy-futures = "0.1.2"
+embassy-embedded-hal = "0.6.0"
+embedded-storage = "0.3.2"
+embedded-storage-async = "0.4.2"
+esp-storage = { version = "0.10.0", features = ["esp32c5", "embedded-storage"] }
+sequential-storage = "8.0.2"
+heapless = "0.9.3"
+
+critical-section = "1.2.0"
+static_cell      = "2.1.1"
+
+
+# For fine tuning these settings, please refer to https://doc.rust-lang.org/cargo/reference/profiles.html
+[profile.dev]
+# The default debug profile is too slow and too big for resource-constrained devices.
+# Always build with some optimizations enabled.
+opt-level = "s"
+
+# esp-radio は dev でも最適化が必須
+[profile.dev.package.esp-radio]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1     # LLVM can perform better optimizations using a single thread
+debug         = 2     # prefer slower builds but better debugging experience
+lto           = 'fat'
+opt-level     = 's'
+
+[workspace]
+members = []
+exclude = ["protocol"]

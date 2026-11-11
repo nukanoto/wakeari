@@ -41,3 +41,12 @@ fp-info-cache
 
 # Local project settings
 *.kicad_prl
+
+# macOS
+.DS_Store
+
+# Build output at the repo root (from iOS builds)
+/build/
+
+# Flutter app: allow XML (AndroidManifest.xml, resources)
+!app/**/*.xml

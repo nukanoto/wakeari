@@ -1,0 +1,5 @@
+# host-side tests: override the parent's riscv target
+[build]
+target = "aarch64-apple-darwin"
+rustflags = []
+[unstable]
