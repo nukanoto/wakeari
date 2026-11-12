@@ -79,7 +79,7 @@ class _ScanPageState extends ConsumerState<ScanPage> {
                     ? Center(
                         child: scanning || connecting
                             ? const MorphingLoader(size: 120)
-                            : const Text('wakeari が見つかりませんでした'),
+                            : const Text('デバイスが見つかりませんでした'),
                       )
                     : ListView(
                         children: [
